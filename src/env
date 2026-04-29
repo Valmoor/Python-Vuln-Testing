@@ -1,0 +1,14 @@
+# VULNERABILITY: Secrets committed to version control (should be in .gitignore)
+FLASK_SECRET_KEY=super_secret_flask_key_do_not_share
+DATABASE_URL=postgresql://admin:prod_P@ssw0rd!@db.prod.example.com:5432/appdb
+AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
+AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+AWS_REGION=us-east-1
+STRIPE_SECRET_KEY=sk_live_4eC39HqLyjWDarjtT1zdp7dc
+STRIPE_WEBHOOK_SECRET=whsec_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+SENDGRID_API_KEY=SG.XXXXXXXXXXXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+GITHUB_TOKEN=ghp_1234567890abcdefghijklmnopqrstuvwxyz
+SLACK_WEBHOOK_URL=https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX
+JWT_SECRET=my_jwt_secret_key
+REDIS_PASSWORD=redis_secret_123
+SMTP_PASSWORD=email_smtp_pass_456

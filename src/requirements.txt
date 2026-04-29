@@ -1,0 +1,14 @@
+# VULNERABILITY: Pinned to old vulnerable versions (for SCA testing)
+flask==0.12.2           # CVE-2018-1000656 - DoS via large JSON body
+requests==2.6.0         # CVE-2015-2296 - redirect credential leakage
+pyyaml==3.13            # CVE-2017-18342 - arbitrary code via yaml.load
+pillow==5.4.1           # CVE-2019-16865 - denial of service
+cryptography==2.1.4     # CVE-2018-10903 - AES-GCM nonce reuse
+urllib3==1.24.1         # CVE-2019-11324 - cert validation
+django==2.0.0           # CVE-2019-3498 - open redirect
+lxml==3.5.0             # CVE-2018-19787 - XSS
+jinja2==2.10            # CVE-2019-10906 - sandbox escape
+werkzeug==0.14.1        # CVE-2019-14322 - path traversal
+paramiko==1.16.0        # CVE-2018-1000805 - auth bypass
+sqlalchemy==1.1.0
+pickle5
