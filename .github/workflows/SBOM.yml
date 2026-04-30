@@ -1,0 +1,44 @@
+name: Security Scan with SBOM/VEX
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Armis CLI
+        run: |
+          curl -sSL https://raw.githubusercontent.com/ArmisSecurity/armis-cli/main/scripts/install.sh | bash
+
+      - name: Run Security Scan with SBOM/VEX
+        env:
+          ARMIS_CLIENT_ID: ${{ secrets.ARMIS_CLIENT_ID }}
+          ARMIS_CLIENT_SECRET: ${{ secrets.ARMIS_CLIENT_SECRET }}
+        run: |
+          armis-cli scan repo . \
+            --format sarif \
+            --sbom --vex \
+            --sbom-output ./artifacts/sbom.json \
+            --vex-output ./artifacts/vex.json \
+            > results.sarif
+
+      - name: Upload SARIF
+        uses: github/codeql-action/upload-sarif@v4
+        if: always()
+        with:
+          sarif_file: results.sarif
+
+      - name: Upload SBOM/VEX Artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sbom-vex-${{ github.sha }}
+          path: ./artifacts/
+          retention-days: 90
